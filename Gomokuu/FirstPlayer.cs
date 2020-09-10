@@ -19,6 +19,7 @@ namespace Gomokuu
             steps.Add(new Position { Row = -1, Column = 0 });
             List<Hindrance> hindrancesForThree = Counter.CountForThree(board, 'o');
             List<Hindrance> hindrancesForFour = Counter.CountForFour(board, 'o');
+            List<Hindrance> easyWin = Counter.CountForFour(board, 'x');
             if (count == 0)
             {
                 board[7, 7] = 'x';
@@ -26,59 +27,96 @@ namespace Gomokuu
             else
             {
                 bool answer2 = false;
-                foreach (var list in hindrancesForFour)
+                if (answer2 != true)
                 {
-                    if (list.Case == true)
+                    foreach (var list in easyWin)
                     {
-                        int rowF = list.RowFirst - list.StepR;
-                        int columnF = list.ColumnFirst - list.StepC;
-                        if (rowF>=0&&rowF<=14&&columnF>=0&&columnF<=14&&board[rowF, columnF] == '_')
+                        if (list.Case == true)
                         {
-                            board[rowF, columnF] = 'x';
-                            list.Case = false;
-                            answer2 = true;
-                            break;
-                        }
-                        else
-                        {
-                            int rowL = list.RowLast + list.StepR;
-                            int columnL = list.ColumnLast + list.StepC;
-                            if (rowL>=0&&rowL<=14&&columnL>=0&&columnL<=14&&board[rowL,columnL ] == '_')
+                            int rowF = list.RowFirst - list.StepR;
+                            int columnF = list.ColumnFirst - list.StepC;
+                            if (rowF >= 0 && rowF <= 14 && columnF >= 0 && columnF <= 14 && board[rowF, columnF] == '_')
                             {
-                                board[rowL, columnL] = 'x';
+                                board[rowF, columnF] = 'x';
                                 list.Case = false;
                                 answer2 = true;
                                 break;
                             }
-                            
+                            else
+                            {
+                                int rowL = list.RowLast + list.StepR;
+                                int columnL = list.ColumnLast + list.StepC;
+                                if (rowL >= 0 && rowL <= 14 && columnL >= 0 && columnL <= 14 && board[rowL, columnL] == '_')
+                                {
+                                    board[rowL, columnL] = 'x';
+                                    list.Case = false;
+                                    answer2 = true;
+                                    break;
+                                }
+
+                            }
                         }
                     }
                 }
-                foreach (var list in hindrancesForThree)
+                if (answer2 != true)
                 {
-                    if (list.Case == true)
+                    foreach (var list in hindrancesForFour)
                     {
-                        int rowF = list.RowFirst - list.StepR;
-                        int columnF = list.ColumnFirst - list.StepC;
-                        if (rowF >= 0 && rowF <= 14 && columnF >= 0 && columnF <= 14 && board[rowF, columnF] == '_')
+                        if (list.Case == true)
                         {
-                            board[rowF, columnF] = 'x';
-                            list.Case = false;
-                            answer2 = true;
-                            break;
-                        }
-                        else
-                        {
-                            int rowL = list.RowLast + list.StepR;
-                            int columnL = list.ColumnLast + list.StepC;
-                            if (rowL >= 0 && rowL <= 14 && columnL >= 0 && columnL <= 14 && board[rowL, columnL] == '_')
+                            int rowF = list.RowFirst - list.StepR;
+                            int columnF = list.ColumnFirst - list.StepC;
+                            if (rowF >= 0 && rowF <= 14 && columnF >= 0 && columnF <= 14 && board[rowF, columnF] == '_')
                             {
-                                board[rowL, columnL] = 'x';
+                                board[rowF, columnF] = 'x';
                                 list.Case = false;
                                 answer2 = true;
                                 break;
                             }
+                            else
+                            {
+                                int rowL = list.RowLast + list.StepR;
+                                int columnL = list.ColumnLast + list.StepC;
+                                if (rowL >= 0 && rowL <= 14 && columnL >= 0 && columnL <= 14 && board[rowL, columnL] == '_')
+                                {
+                                    board[rowL, columnL] = 'x';
+                                    list.Case = false;
+                                    answer2 = true;
+                                    break;
+                                }
 
+                            }
+                        }
+                    }
+                }
+                if (answer2 != true)
+                {
+                    foreach (var list in hindrancesForThree)
+                    {
+                        if (list.Case == true)
+                        {
+                            int rowF = list.RowFirst - list.StepR;
+                            int columnF = list.ColumnFirst - list.StepC;
+                            if (rowF >= 0 && rowF <= 14 && columnF >= 0 && columnF <= 14 && board[rowF, columnF] == '_')
+                            {
+                                board[rowF, columnF] = 'x';
+                                list.Case = false;
+                                answer2 = true;
+                                break;
+                            }
+                            else
+                            {
+                                int rowL = list.RowLast + list.StepR;
+                                int columnL = list.ColumnLast + list.StepC;
+                                if (rowL >= 0 && rowL <= 14 && columnL >= 0 && columnL <= 14 && board[rowL, columnL] == '_')
+                                {
+                                    board[rowL, columnL] = 'x';
+                                    list.Case = false;
+                                    answer2 = true;
+                                    break;
+                                }
+
+                            }
                         }
                     }
                 }
