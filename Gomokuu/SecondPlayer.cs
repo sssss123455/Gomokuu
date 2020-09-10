@@ -151,13 +151,12 @@ namespace Gomokuu
                             List<Position> positionsFree = Сoordinates.Get(board, '_');
                             if (positionsFree.Count > 0)
                             {
-                                if (positionsFree.Count > 0)
-                                {
-                                    int num = RandomNumber.Get(0, positionsFree.Count - 1);
-                                    board[positionsFree[num].Row, positionsFree[num].Column] = 'o';
-                                    answer = true;
-                                    break;
-                                }
+
+                                int num = RandomNumber.Get(0, positionsFree.Count - 1);
+                                board[positionsFree[num].Row, positionsFree[num].Column] = 'o';
+                                answer = true;
+                                break;
+
                             }
                         }
                     }
