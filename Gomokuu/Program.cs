@@ -18,7 +18,7 @@ namespace Gomokuu
                     answer=Five.Search(board, 'x');
                     if (answer == true)
                     {
-                        text = "The first player win";
+                        text = "The first player is win";
                         break;
                     }
                 }
@@ -28,7 +28,7 @@ namespace Gomokuu
                     answer=Five.Search(board, 'o');
                     if (answer == true)
                     {
-                        text = "The second player win";
+                        text = "The second player is win";
                         break;
                     }
                 }
