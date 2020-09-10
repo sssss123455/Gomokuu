@@ -10,7 +10,7 @@ namespace Gomokuu
             string text="No winner";
             int count = 0;
             char[,] board = Board.Get();
-            while ( count != 224)
+            while ( answer!=true|count != 224)
             {
                 if (count % 2 == 0)
                 {
