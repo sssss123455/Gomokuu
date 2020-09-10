@@ -107,7 +107,7 @@ namespace Gomokuu
             {
                 if (secondForDiogonal[i].Column == secondForDiogonal[i + 1].Column - 1 && secondForDiogonal[i].Column == secondForDiogonal[i + 2].Column - 2 && secondForDiogonal[i].Row == secondForDiogonal[i + 1].Row - 1 && secondForDiogonal[i].Row == secondForDiogonal[i + 2].Row - 2)
                 {
-                    three.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i ].Column + 2, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 2, StepC = 1, StepR = 1 });
+                    three.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i ].Column + 2, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 2, StepC = 1, StepR = -1 });
                 }
             }
             return three;
@@ -211,7 +211,7 @@ namespace Gomokuu
             {
                 if (secondForDiogonal[i].Column == secondForDiogonal[i + 1].Column - 1 && secondForDiogonal[i].Column == secondForDiogonal[i + 2].Column - 2 && secondForDiogonal[i].Row == secondForDiogonal[i + 1].Row + 1 && secondForDiogonal[i].Row == secondForDiogonal[i + 2].Row + 2 && secondForDiogonal[i].Row == secondForDiogonal[i + 3].Row + 3 && secondForDiogonal[i].Column == secondForDiogonal[i + 3].Column - 3)
                 {
-                    four.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i].Column + 3, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 3, StepC = 1, StepR = 1 });
+                    four.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i].Column + 3, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 3, StepC = 1, StepR = -1 });
                 }
             }
 
