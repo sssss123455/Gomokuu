@@ -146,11 +146,13 @@ namespace Gomokuu
                         else
                         {
                             List<Position> positionsFree = Сoordinates.Get(board, '_');
-                            int num = RandomNumber.Get(0, positionsFree.Count-1);
-                            board[positionsFree[num].Row, positionsFree[num].Column] = 'x';
-                            answer = true;
-                            break;
-                            
+                            if (positionsFree.Count > 0)
+                            {
+                                int num = RandomNumber.Get(0, positionsFree.Count - 1);
+                                board[positionsFree[num].Row, positionsFree[num].Column] = 'x';
+                                answer = true;
+                                break;
+                            }
                         }
                     }
                 }
