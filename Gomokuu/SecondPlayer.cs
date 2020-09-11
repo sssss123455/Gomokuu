@@ -32,6 +32,7 @@ namespace Gomokuu
                 bool answer2 = false;
                 if (answer2 != true)
                 {
+
                     foreach (var list in easyWin)
                     {
                         if (list.Case == true)
