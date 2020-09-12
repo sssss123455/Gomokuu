@@ -15,39 +15,66 @@ namespace Gomokuu
             var positionsForRow = Coordinat.Get(board, symbol).OrderBy(i=>i.Row).ThenBy(i=>i.Column);
             for (int i = 0; i < size; i++)
             {
-                int count = 1;
+
+                int k = 1;
                 for (int j = 0; j < size; j++)
                 {
-                    if (positionsForRow.ElementAt(i).Row == positionsForRow.ElementAt(j).Row && i != j)
+                    if (i != j && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(j).Column - k && positionsForRow.ElementAt(i).Row == positionsForRow.ElementAt(j).Row)
                     {
-                        count+=1;
-                        if (count == 3)
-                            break;
+                        k++;
+                        if (k == 3)
+                        {
+                            three.Add(new Hindrance { Case = true,RowFirst = positionsForRow.ElementAt(i).Row, RowLast = positionsForRow.ElementAt(i).Row, ColumnFirst = positionsForRow.ElementAt(i).Column, ColumnLast = positionsForRow.ElementAt(i).Column + 2, StepR = 0, StepC = 1 }) ;
+
+                        }
                     }
                 }
-                if (i< size - 2 && count == 3 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 1).Column - 1 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 2).Column - 2)
-                {
-                    three.Add(new Hindrance { Case = true,RowFirst = positionsForRow.ElementAt(i).Row, RowLast = positionsForRow.ElementAt(i).Row, ColumnFirst = positionsForRow.ElementAt(i).Column, ColumnLast = positionsForRow.ElementAt(i).Column + 2, StepR = 0, StepC = 1 }) ;
-                }
+                //int count = 1;
+                //for (int j = 0; j < size; j++)
+                //{
+                //    if (positionsForRow.ElementAt(i).Row == positionsForRow.ElementAt(j).Row && i != j)
+                //    {
+                //        count+=1;
+                //        if (count == 3)
+                //            break;
+                //    }
+                //}
+                //if (i< size - 2 && count == 3 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 1).Column - 1 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 2).Column - 2)
+                //{
+                //    three.Add(new Hindrance { Case = true,RowFirst = positionsForRow.ElementAt(i).Row, RowLast = positionsForRow.ElementAt(i).Row, ColumnFirst = positionsForRow.ElementAt(i).Column, ColumnLast = positionsForRow.ElementAt(i).Column + 2, StepR = 0, StepC = 1 }) ;
+                //}
             }
             //----------------------
             var positionsForColumn = Coordinat.Get(board, symbol).OrderBy(i => i.Column).ThenBy(i => i.Row);
             for (int i = 0; i < size; i++)
             {
-                int count2 = 1;
+                int k = 1;
                 for (int j = 0; j < size; j++)
                 {
-                    if (positionsForColumn.ElementAt(i).Column == positionsForColumn.ElementAt(j).Column && i != j)
+                    if (i != j && positionsForColumn.ElementAt(i).Column == positionsForColumn.ElementAt(j).Column && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(j).Row - k)
                     {
-                        count2 += 1;
-                        if (count2 == 3)
-                            break;
+                        k++;
+                        if (k == 3)
+                        {
+                            three.Add(new Hindrance {Case=true, RowFirst = positionsForColumn.ElementAt(i).Row, RowLast = positionsForColumn.ElementAt(i).Row + 2, ColumnFirst = positionsForColumn.ElementAt(i).Column, ColumnLast = positionsForColumn.ElementAt(i).Column, StepC = 0, StepR = 1 });
+
+                        }
                     }
                 }
-                if (i < size - 2 && count2 == 3 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 1).Row - 1 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 2).Row - 2)
-                {
-                    three.Add(new Hindrance {Case=true, RowFirst = positionsForColumn.ElementAt(i).Row, RowLast = positionsForColumn.ElementAt(i).Row + 2, ColumnFirst = positionsForColumn.ElementAt(i).Column, ColumnLast = positionsForColumn.ElementAt(i).Column, StepC = 0, StepR = 1 });
-                }
+                //int count2 = 1;
+                //for (int j = 0; j < size; j++)
+                //{
+                //    if (positionsForColumn.ElementAt(i).Column == positionsForColumn.ElementAt(j).Column && i != j)
+                //    {
+                //        count2 += 1;
+                //        if (count2 == 3)
+                //            break;
+                //    }
+                //}
+                //if (i < size - 2 && count2 == 3 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 1).Row - 1 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 2).Row - 2)
+                //{
+                //    three.Add(new Hindrance {Case=true, RowFirst = positionsForColumn.ElementAt(i).Row, RowLast = positionsForColumn.ElementAt(i).Row + 2, ColumnFirst = positionsForColumn.ElementAt(i).Column, ColumnLast = positionsForColumn.ElementAt(i).Column, StepC = 0, StepR = 1 });
+                //}
             }
             //--------------------------------------------------------------
             List<Position> firstForDiogonal = new List<Position>();
@@ -74,9 +101,18 @@ namespace Gomokuu
             }
             for (int i = 0; i < firstForDiogonal.Count - 2; i++)
             {
-                if (firstForDiogonal[i].Column == firstForDiogonal[i + 1].Column - 1 && firstForDiogonal[i].Column == firstForDiogonal[i + 2].Column - 2 && firstForDiogonal[i].Row == firstForDiogonal[i + 1].Row - 1 && firstForDiogonal[i].Row == firstForDiogonal[i + 2].Row - 2)
+                int k = 1;
+                for (int j = 0; j < firstForDiogonal.Count; j++)
                 {
-                    three.Add(new Hindrance { Case = true, ColumnFirst = firstForDiogonal[i].Column, ColumnLast = firstForDiogonal[i ].Column + 2, RowFirst = firstForDiogonal[i].Row, RowLast = firstForDiogonal[i ].Row + 2, StepC = 1, StepR = 1 });
+                    if (i != j && firstForDiogonal.ElementAt(i).Column == firstForDiogonal.ElementAt(j).Column - k && firstForDiogonal.ElementAt(i).Row == firstForDiogonal.ElementAt(j).Row - k)
+                    {
+                        k++;
+                        if (k == 3)
+                        {
+                            three.Add(new Hindrance { Case = true, ColumnFirst = firstForDiogonal[i].Column, ColumnLast = firstForDiogonal[i ].Column + 2, RowFirst = firstForDiogonal[i].Row, RowLast = firstForDiogonal[i ].Row + 2, StepC = 1, StepR = 1 });
+
+                        }
+                    }
                 }
             }
             //--------------------------------------------------------------
@@ -105,9 +141,18 @@ namespace Gomokuu
             }
             for (int i = 0; i < secondForDiogonal.Count - 2; i++)
             {
-                if (secondForDiogonal[i].Column == secondForDiogonal[i + 1].Column - 1 && secondForDiogonal[i].Column == secondForDiogonal[i + 2].Column - 2 && secondForDiogonal[i].Row == secondForDiogonal[i + 1].Row + 1 && secondForDiogonal[i].Row == secondForDiogonal[i + 2].Row + 2)
+                int k = 1;
+                for (int j = 0; j < secondForDiogonal.Count; j++)
                 {
-                    three.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i ].Column + 2, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 2, StepC = 1, StepR = -1 });
+                    if (i != j && secondForDiogonal[i].Column == secondForDiogonal[j].Column - k && secondForDiogonal[i].Row == secondForDiogonal[j].Row + k)
+                    {
+                        k++;
+                        if (k == 3)
+                        {
+                            three.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i].Column + 3, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 3, StepC = 1, StepR = -1 });
+
+                        }
+                    }
                 }
             }
             return three;
@@ -119,38 +164,36 @@ namespace Gomokuu
             var positionsForRow = Coordinat.Get(board, symbol).OrderBy(i => i.Row).ThenBy(i => i.Column);
             for (int i = 0; i < size; i++)
             {
-                int count = 1;
+                int k = 1;
                 for (int j = 0; j < size; j++)
                 {
-                    if (positionsForRow.ElementAt(i).Row == positionsForRow.ElementAt(j).Row && i != j)
+                    if (i != j && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(j).Column - k && positionsForRow.ElementAt(i).Row == positionsForRow.ElementAt(j).Row)
                     {
-                        count += 1;
-                        if (count == 4)
-                            break;
+                        k++;
+                        if (k == 4)
+                        {
+                            four.Add(new Hindrance { Case = true, RowFirst = positionsForRow.ElementAt(i).Row, RowLast = positionsForRow.ElementAt(i).Row, ColumnFirst = positionsForRow.ElementAt(i).Column, ColumnLast = positionsForRow.ElementAt(i).Column + 2, StepR = 0, StepC = 1 });
+
+                        }
                     }
-                }
-                if (i < size - 3 && count == 4 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 1).Column - 1 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 2).Column - 2 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 3).Column - 3)
-                {
-                    four.Add(new Hindrance { Case = true, RowFirst = positionsForRow.ElementAt(i).Row, RowLast = positionsForRow.ElementAt(i).Row, ColumnFirst = positionsForRow.ElementAt(i).Column, ColumnLast = positionsForRow.ElementAt(i).Column + 3, StepR = 0, StepC = 1 });
                 }
             }
             //----------------------
             var positionsForColumn = Coordinat.Get(board, symbol).OrderBy(i => i.Column).ThenBy(i => i.Row);
             for (int i = 0; i < size; i++)
             {
-                int count2 = 1;
+                int k = 1;
                 for (int j = 0; j < size; j++)
                 {
-                    if (positionsForColumn.ElementAt(i).Column == positionsForColumn.ElementAt(j).Column && i != j)
+                    if (i != j && positionsForColumn.ElementAt(i).Column == positionsForColumn.ElementAt(j).Column && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(j).Row - k)
                     {
-                        count2 += 1;
-                        if (count2 == 4)
-                            break;
+                        k++;
+                        if (k == 4)
+                        {
+                            four.Add(new Hindrance { Case = true, RowFirst = positionsForColumn.ElementAt(i).Row, RowLast = positionsForColumn.ElementAt(i).Row + 2, ColumnFirst = positionsForColumn.ElementAt(i).Column, ColumnLast = positionsForColumn.ElementAt(i).Column, StepC = 0, StepR = 1 });
+
+                        }
                     }
-                }
-                if (i < size - 3 && count2 == 4 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 1).Row - 1 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 2).Row - 2 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 3).Row - 3)
-                {
-                    four.Add(new Hindrance { Case = true, RowFirst = positionsForColumn.ElementAt(i).Row, RowLast = positionsForColumn.ElementAt(i).Row + 2, ColumnFirst = positionsForColumn.ElementAt(i).Column, ColumnLast = positionsForColumn.ElementAt(i).Column, StepC = 0, StepR = 1 });
                 }
             }
             //-----------------------------------------------------------------------------------------------------
@@ -178,9 +221,18 @@ namespace Gomokuu
             }
             for (int i = 0; i < firstForDiogonal.Count - 3; i++)
             {
-                if (firstForDiogonal[i].Column == firstForDiogonal[i + 1].Column - 1 && firstForDiogonal[i].Column == firstForDiogonal[i + 2].Column - 2 && firstForDiogonal[i].Row == firstForDiogonal[i + 1].Row - 1 && firstForDiogonal[i].Row == firstForDiogonal[i + 2].Row - 2 && firstForDiogonal[i].Row == firstForDiogonal[i + 3].Row - 3 && firstForDiogonal[i].Column == firstForDiogonal[i + 3].Column - 3)
+                int k = 1;
+                for (int j = 0; j < firstForDiogonal.Count; j++)
                 {
-                    four.Add(new Hindrance { Case = true, ColumnFirst = firstForDiogonal[i].Column, ColumnLast = firstForDiogonal[i].Column + 3, RowFirst = firstForDiogonal[i].Row, RowLast = firstForDiogonal[i ].Row + 3, StepC = 1, StepR = 1 });
+                    if (i != j && firstForDiogonal.ElementAt(i).Column == firstForDiogonal.ElementAt(j).Column - k && firstForDiogonal.ElementAt(i).Row == firstForDiogonal.ElementAt(j).Row - k)
+                    {
+                        k++;
+                        if (k == 4)
+                        {
+                            four.Add(new Hindrance { Case = true, ColumnFirst = firstForDiogonal[i].Column, ColumnLast = firstForDiogonal[i].Column + 2, RowFirst = firstForDiogonal[i].Row, RowLast = firstForDiogonal[i].Row + 2, StepC = 1, StepR = 1 });
+
+                        }
+                    }
                 }
             }
             //-----------------------------------------------------------------
@@ -209,9 +261,18 @@ namespace Gomokuu
             }
             for (int i = 0; i < secondForDiogonal.Count - 3; i++)
             {
-                if (secondForDiogonal[i].Column == secondForDiogonal[i + 1].Column - 1 && secondForDiogonal[i].Column == secondForDiogonal[i + 2].Column - 2 && secondForDiogonal[i].Row == secondForDiogonal[i + 1].Row + 1 && secondForDiogonal[i].Row == secondForDiogonal[i + 2].Row + 2 && secondForDiogonal[i].Row == secondForDiogonal[i + 3].Row + 3 && secondForDiogonal[i].Column == secondForDiogonal[i + 3].Column - 3)
+                int k = 1;
+                for (int j = 0; j < secondForDiogonal.Count; j++)
                 {
-                    four.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i].Column + 3, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 3, StepC = 1, StepR = -1 });
+                    if (i != j && secondForDiogonal[i].Column == secondForDiogonal[j].Column - k && secondForDiogonal[i].Row == secondForDiogonal[j].Row + k)
+                    {
+                        k++;
+                        if (k == 4)
+                        {
+                            four.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i].Column + 3, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 3, StepC = 1, StepR = -1 });
+
+                        }
+                    }
                 }
             }
 
