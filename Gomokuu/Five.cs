@@ -11,8 +11,8 @@ namespace Gomokuu
         public static bool Search(char[,] board, char symbol)
         {
             bool mainAnswer = false;
-            int size = Сoordinates.Get(board, symbol).Count;
-            var positionsForRow = Сoordinates.Get(board, symbol).OrderBy(i => i.Row).ThenBy(i => i.Column);
+            int size = Coordinat.Get(board, symbol).Count;
+            var positionsForRow = Coordinat.Get(board, symbol).OrderBy(i => i.Row).ThenBy(i => i.Column);
             for (int i = 0; i < size; i++)
             {
                 int count = 1;
@@ -32,7 +32,7 @@ namespace Gomokuu
                 }
             }
             //------------------------------------------------------------------------------------------------------------
-            var positionsForColumn = Сoordinates.Get(board, symbol).OrderBy(i => i.Column).ThenBy(i => i.Row);
+            var positionsForColumn = Coordinat.Get(board, symbol).OrderBy(i => i.Column).ThenBy(i => i.Row);
             for (int i = 0; i < size; i++)
             {
                 int count2 = 1;
@@ -85,7 +85,7 @@ namespace Gomokuu
             }
             //----------------------------------------------------------------------------------------------------
             List<Position> secondForDiogonal = new List<Position>();
-            var positions= Сoordinates.Get(board, symbol).OrderByDescending(i => i.Row);
+            var positions= Coordinat.Get(board, symbol).OrderByDescending(i => i.Row);
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)

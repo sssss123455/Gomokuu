@@ -17,12 +17,13 @@ namespace Gomokuu
             steps.Add(new Position { Row = 1, Column = 1 });
             steps.Add(new Position { Row = 0, Column = -1 });
             steps.Add(new Position { Row = -1, Column = 0 });
-            List<Position> positionsX = Сoordinates.Get(board, 'x');
+            List<Position> positionsX = Coordinat.Get(board, 'x');
             List<Hindrance> hindrancesForThree = Counter.CountForThree(board, 'x');
             List<Hindrance> hindrancesForFour = Counter.CountForFour(board, 'x');
             List<Hindrance> easyWin = Counter.CountForFour(board, 'o');
             if (count == 1)
             {
+                
                 int num = RandomNumber.Get(0, 7);
                 Position step = steps[num];
                 board[positionsX.First().Row + step.Row, positionsX.First().Column + step.Column] = 'o';
@@ -30,7 +31,7 @@ namespace Gomokuu
             else
             {
                 bool answer2 = false;
-                if (answer2 != true)
+                if (easyWin.Count!=0&&answer2 != true)
                 {
 
                     foreach (var list in easyWin)
@@ -62,7 +63,7 @@ namespace Gomokuu
                         }
                     }
                 }
-                if (answer2 != true)
+                if (hindrancesForFour.Count!=0&&answer2 != true)
                 {
                     foreach (var list in hindrancesForFour)
                     {
@@ -93,7 +94,7 @@ namespace Gomokuu
                         }
                     }
                 }
-                if (answer2 != true)
+                if (hindrancesForThree.Count!=0&&answer2 != true)
                 {
                     foreach (var list in hindrancesForThree)
                     {
@@ -126,7 +127,7 @@ namespace Gomokuu
                 }
                 if (answer2 != true)
                 {
-                    List<Position> positionsForX = Сoordinates.Get(board, 'o');
+                    List<Position> positionsForX = Coordinat.Get(board, 'o');
                     int k = 0;
                     bool answer3 = false;
                     while (answer3 != true)
@@ -149,7 +150,7 @@ namespace Gomokuu
                         }
                         else
                         {
-                            List<Position> positionsFree = Сoordinates.Get(board, '_');
+                            List<Position> positionsFree = Coordinat.Get(board, '_');
                             if (positionsFree.Count > 0)
                             {
 

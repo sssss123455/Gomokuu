@@ -10,5 +10,6 @@ namespace Gomokuu
     {
         public int Row;
         public int Column;
+        
     }
 }

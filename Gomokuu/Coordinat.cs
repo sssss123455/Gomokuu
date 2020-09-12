@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gomokuu
 {
-    public static class Сoordinates
+    public  class Coordinat
     {
         public static List<Position> Get(char[,] board,char symbol)
         {

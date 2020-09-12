@@ -68,7 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumber.cs" />
     <Compile Include="SecondPlayer.cs" />
-    <Compile Include="Сoordinates.cs" />
+    <Compile Include="Coordinat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -11,8 +11,8 @@ namespace Gomokuu
         public static List<Hindrance> CountForThree(char[,] board,char symbol)
         {
             List<Hindrance> three = new List<Hindrance>();
-            int size = Сoordinates.Get(board, symbol).Count;
-            var positionsForRow = Сoordinates.Get(board, symbol).OrderBy(i=>i.Row).ThenBy(i=>i.Column);
+            int size = Coordinat.Get(board, symbol).Count;
+            var positionsForRow = Coordinat.Get(board, symbol).OrderBy(i=>i.Row).ThenBy(i=>i.Column);
             for (int i = 0; i < size; i++)
             {
                 int count = 1;
@@ -31,7 +31,7 @@ namespace Gomokuu
                 }
             }
             //----------------------
-            var positionsForColumn = Сoordinates.Get(board, symbol).OrderBy(i => i.Column).ThenBy(i => i.Row);
+            var positionsForColumn = Coordinat.Get(board, symbol).OrderBy(i => i.Column).ThenBy(i => i.Row);
             for (int i = 0; i < size; i++)
             {
                 int count2 = 1;
@@ -115,8 +115,8 @@ namespace Gomokuu
         public static List<Hindrance> CountForFour(char[,] board, char symbol)
         {
             List<Hindrance> four = new List<Hindrance>();
-            int size = Сoordinates.Get(board, symbol).Count;
-            var positionsForRow = Сoordinates.Get(board, symbol).OrderBy(i => i.Row).ThenBy(i => i.Column);
+            int size = Coordinat.Get(board, symbol).Count;
+            var positionsForRow = Coordinat.Get(board, symbol).OrderBy(i => i.Row).ThenBy(i => i.Column);
             for (int i = 0; i < size; i++)
             {
                 int count = 1;
@@ -135,7 +135,7 @@ namespace Gomokuu
                 }
             }
             //----------------------
-            var positionsForColumn = Сoordinates.Get(board, symbol).OrderBy(i => i.Column).ThenBy(i => i.Row);
+            var positionsForColumn = Coordinat.Get(board, symbol).OrderBy(i => i.Column).ThenBy(i => i.Row);
             for (int i = 0; i < size; i++)
             {
                 int count2 = 1;

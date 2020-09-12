@@ -27,7 +27,7 @@ namespace Gomokuu
             else
             {
                 bool answer2 = false;
-                if (answer2 != true)
+                if (easyWin.Count!=0&&answer2 != true)
                 {
                     foreach (var list in easyWin)
                     {
@@ -58,7 +58,7 @@ namespace Gomokuu
                         }
                     }
                 }
-                if (answer2 != true)
+                if (hindrancesForFour.Count!=0&&answer2 != true)
                 {
                     foreach (var list in hindrancesForFour)
                     {
@@ -89,7 +89,7 @@ namespace Gomokuu
                         }
                     }
                 }
-                if (answer2 != true)
+                if (hindrancesForThree.Count!=0&&answer2 != true)
                 {
                     foreach (var list in hindrancesForThree)
                     {
@@ -122,7 +122,7 @@ namespace Gomokuu
                 }
                 if (answer2 != true)
                 {
-                    List<Position> positionsForX = Сoordinates.Get(board, 'x');
+                    List<Position> positionsForX = Coordinat.Get(board, 'x');
                     int k = 0;
                     bool answer3 = false;
                     while (answer3 != true)
@@ -145,13 +145,14 @@ namespace Gomokuu
                         }
                         else
                         {
-                            List<Position> positionsFree = Сoordinates.Get(board, '_');
+                            List<Position> positionsFree = Coordinat.Get(board, '_');
                             if (positionsFree.Count > 0)
                             {
                                 int num = RandomNumber.Get(0, positionsFree.Count - 1);
                                 board[positionsFree[num].Row, positionsFree[num].Column] = 'x';
                                 answer = true;
                                 break;
+                                
                             }
                         }
                     }

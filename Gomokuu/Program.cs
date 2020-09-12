@@ -10,7 +10,7 @@ namespace Gomokuu
             string text = "No winner";
             int count = 0;
             char[,] board = Board.Get();
-            while (answer != true)
+            while (count!=225)
             {
                 if (count % 2 == 0)
                 {
@@ -19,6 +19,7 @@ namespace Gomokuu
                     if (answer == true)
                     {
                         text = "The first player is win";
+                        break;
                         
                     }
 
@@ -30,6 +31,7 @@ namespace Gomokuu
                     if (answer == true)
                     {
                         text = "The second player is win";
+                        break;
                         
                     }
                 }
