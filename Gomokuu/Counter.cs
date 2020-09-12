@@ -105,7 +105,7 @@ namespace Gomokuu
             }
             for (int i = 0; i < secondForDiogonal.Count - 2; i++)
             {
-                if (secondForDiogonal[i].Column == secondForDiogonal[i + 1].Column - 1 && secondForDiogonal[i].Column == secondForDiogonal[i + 2].Column - 2 && secondForDiogonal[i].Row == secondForDiogonal[i + 1].Row - 1 && secondForDiogonal[i].Row == secondForDiogonal[i + 2].Row - 2)
+                if (secondForDiogonal[i].Column == secondForDiogonal[i + 1].Column - 1 && secondForDiogonal[i].Column == secondForDiogonal[i + 2].Column - 2 && secondForDiogonal[i].Row == secondForDiogonal[i + 1].Row + 1 && secondForDiogonal[i].Row == secondForDiogonal[i + 2].Row + 2)
                 {
                     three.Add(new Hindrance { Case = true, ColumnFirst = secondForDiogonal[i].Column, ColumnLast = secondForDiogonal[i ].Column + 2, RowFirst = secondForDiogonal[i].Row, RowLast = secondForDiogonal[i].Row - 2, StepC = 1, StepR = -1 });
                 }

@@ -28,6 +28,7 @@ namespace Gomokuu
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
             Console.ReadKey();
         }
     }
