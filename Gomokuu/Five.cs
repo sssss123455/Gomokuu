@@ -22,11 +22,11 @@ namespace Gomokuu
                     if (positionsForRow.ElementAt(i).Row == positionsForRow.ElementAt(j).Row && i != j)
                     {
                         count += 1;
-                        if (count == 5)
+                        if (count >= 5)
                             break;
                     }
                 }
-                if (i < size - 4 && count == 5 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 1).Column - 1 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 2).Column - 2 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 3).Column - 3 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 4).Column - 4)
+                if (i < size - 4 && count >= 5 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 1).Column - 1 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 2).Column - 2 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 3).Column - 3 && positionsForRow.ElementAt(i).Column == positionsForRow.ElementAt(i + 4).Column - 4)
                 {
                     mainAnswer = true;
                 }
@@ -41,11 +41,11 @@ namespace Gomokuu
                     if (positionsForColumn.ElementAt(i).Column == positionsForColumn.ElementAt(j).Column && i != j)
                     {
                         count2 += 1;
-                        if (count2 == 5)
+                        if (count2 >= 5)
                             break;
                     }
                 }
-                if (i < size - 4 && count2 == 5 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 1).Row - 1 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 2).Row - 2 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 3).Row - 3 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 4).Row - 4)
+                if (i < size - 4 && count2 >= 5 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 1).Row - 1 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 2).Row - 2 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 3).Row - 3 && positionsForColumn.ElementAt(i).Row == positionsForColumn.ElementAt(i + 4).Row - 4)
                 {
                     mainAnswer = true;
                 }
